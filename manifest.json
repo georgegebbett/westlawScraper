@@ -1,0 +1,31 @@
+{
+  "name": "WestLaw Scraper",
+  "version": "1.0",
+  "description": "Get case info from WestLaw",
+  "permissions": [
+    "http://*.westlaw.com/Document/*",
+    "https://*.westlaw.com/Document/*"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.westlaw.com/Document/*"],
+      "all_frames": true,
+      "run_at": "document_idle",
+      "js": ["contentScript.js"]
+    }
+  ],
+  "commands": {
+    "copy_name": {
+      "suggested_key": {
+        "default": "Alt+Shift+U",
+        "mac": "MacCtrl+Shift+U"
+      },
+    "description": "Scrape Case"
+    }
+  },
+	"manifest_version": 2
+}
